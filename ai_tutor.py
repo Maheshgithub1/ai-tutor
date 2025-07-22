@@ -4,23 +4,20 @@ import os
 
 try:
     import openai
-    from openai import OpenAI
 except ImportError:
     openai = None
-    OpenAI = None
 
-# Set your API key from Streamlit secrets or environment
 try:
     import streamlit as st
     api_key = st.secrets["OPENAI_API_KEY"]
-except:
+except Exception:
     api_key = os.getenv("OPENAI_API_KEY", "sk-your-api-key-here")
 
 def ask_tutor(question):
-    if not OpenAI:
+    if not openai:
         return "OpenAI module is not available. Please install it using 'pip install openai'."
 
-    client = OpenAI(api_key=api_key)
+    openai.api_key = api_key
 
     prompt = (
         "You are a friendly AI Tutor. Explain math or English concepts in simple, step-by-step terms.\n"
@@ -29,7 +26,7 @@ def ask_tutor(question):
     )
 
     try:
-        response = client.chat.completions.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a friendly and helpful AI tutor."},
