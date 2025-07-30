@@ -17,8 +17,7 @@ def ask_tutor(question):
     if not OpenAI:
         return "OpenAI module is not available. Please install it using 'pip install openai'."
 
-    client = OpenAI(api_key="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")
-
+    client = OpenAI(api_key="your-api-key")
     prompt = (
         "You are a friendly AI Tutor. Explain math or English concepts in simple, step-by-step terms.\n"
         "Encourage the student. Give examples when needed.\n"
