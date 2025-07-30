@@ -9,7 +9,7 @@ except ImportError:
 
 try:
     import streamlit as st
-    api_key = st.secrets["OPENAI_API_KEY"]
+    openai.api_key = st.secrets["OPENAI_API_KEY"]
 except Exception:
     api_key = os.getenv("OPENAI_API_KEY", "sk-your-api-key-here")
 
