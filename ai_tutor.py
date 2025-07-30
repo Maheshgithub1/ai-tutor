@@ -17,7 +17,7 @@ def ask_tutor(question):
     if not OpenAI:
         return "OpenAI module is not available. Please install it using 'pip install openai'."
 
-    client = OpenAI(api_key=api_key)
+    client = OpenAI(api_key="your-api-key")
 
     prompt = (
         "You are a friendly AI Tutor. Explain math or English concepts in simple, step-by-step terms.\n"
@@ -35,7 +35,7 @@ def ask_tutor(question):
             temperature=0.6,
             max_tokens=500
         )
-        return response.choices[0].message.content.strip()
+        print (response.choices[0].message.content)
     except Exception as e:
         return f"An error occurred: {str(e)}"
 
