@@ -10,7 +10,7 @@ st.title("📘 AI Tutor – Learn Math or English")  # ✅ FIXED: Removed raw Un
 
 user_input = st.text_input(
     "Ask your question (e.g., What is a verb? or How to solve 2x + 3 = 7?)",
-    key="user_input_field"
+    key="user_input_field")
 
 
 if user_input:
