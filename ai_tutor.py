@@ -2,6 +2,14 @@
 
 import os
 
+import requests
+
+headers = {
+    "Authorization": f"Bearer {OPENAI_API_KEY}"
+}
+
+response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data)
+
 try:
     from openai import OpenAI
 except ImportError:
@@ -11,13 +19,13 @@ try:
     import streamlit as st
     openai.api_key = st.secrets["OPENAI_API_KEY"]
 except Exception:
-    api_key = os.getenv("OPENAI_API_KEY", "sk-your-api-key-here")
+    api_key = os.getenv("OPENAI_API_KEY")
 
 def ask_tutor(question):
     if not OpenAI:
         return "OpenAI module is not available. Please install it using 'pip install openai'."
 
-    client = OpenAI(api_key="your-api-key")
+    client = OpenAI(api_key="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")
     prompt = (
         "You are a friendly AI Tutor. Explain math or English concepts in simple, step-by-step terms.\n"
         "Encourage the student. Give examples when needed.\n"
